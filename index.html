@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TodoApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Application</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="bower_components/angular-native-picker/build/themes/default.css">
+    <link rel="stylesheet" href="bower_components/angular-native-picker/build/themes/default.date.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <section ng-controller="TodoCtrl" class="container-fluid">
+        <div class="panel panel-primary">
+            <h3 class="panel-heading">
+                Welcome to todoApp
+            </h3>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item " ng-repeat="todo in todos">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="todo.status"> 
+                                        <span>{{todo.text}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-2">
+                                <select class="form-control" ng-model="todo.priority">
+                                    <option value="0" selected>not important</option>
+                                    <option value="1">as usual</option>
+                                    <option value="2">important</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-6 col-md-2">
+                                <input class="form-control datepicker" pick-a-date-options="{ format: 'dd.mm.yyyy' }" pick-a-date="date" type="text" ng-model="todo.deadline">
+                            </div>
+                            <div class="col-xs-6 col-md-2">
+                                <button class="btn btn-danger" ng-click="removeTodo($index)">remove</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-horizontal list-group-item" ng-submit="addTodo()">
+                    <legend>Add new item to the list</legend>
+                    <div class="form-group row ">
+                        <div class="col-xs-12 col-md-6 ">
+                            <input class="form-control todo-text" type="text" ng-model="todoText" placeholder="Type your todo text here" required>
+                        </div>
+                        <div class="col-xs-12 col-md-2">
+                            <select class="form-control todo-select" ng-model="todoPriority">
+                                <option value="0" selected>not important</option>
+                                <option value="1">as usual</option>
+                                <option value="2">important</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-8 col-md-2">
+                            <input id="pickToday" class="form-control datepicker" pick-a-date-options="{ format: 'dd.mm.yyyy' }" pick-a-date="date"  type="text" ng-model="todoDeadline">
+                        </div>
+                        <div class="col-xs-4 col-md-2">
+                            <input class="btn btn-success" type="submit" value="add todo">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-native-picker/build/angular-datepicker.js"></script>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

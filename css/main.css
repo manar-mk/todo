@@ -1,0 +1,23 @@
+body{
+	font-size: 16px;
+}
+h3{
+	text-align: center;
+	padding: 20px !important;
+}
+.panel{
+	margin-top: 5%;
+}
+.checkbox,.form-control{
+	display: inline-block;
+}
+.datepicker{
+	cursor: default !important;
+}
+input[type="checkbox"]:checked+span{
+	text-decoration: line-through;
+	opacity: .8;
+}
+.todo-text,.todo-select{
+	margin-bottom: 10px;
+}
