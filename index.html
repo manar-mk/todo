@@ -22,25 +22,25 @@
             </h3>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item " ng-repeat="todo in todos">
+                    <li class="list-group-item " ng-repeat="todo in todos track by $index">
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" ng-model="todo.status"> 
+                                        <input type="checkbox" ng-model="todo.status" ng-change="save()" > 
                                         <span>{{todo.text}}</span>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-md-2">
-                                <select class="form-control" ng-model="todo.priority">
+                                <select class="form-control" ng-model="todo.priority" ng-change="save()">
                                     <option value="0" selected>not important</option>
                                     <option value="1">as usual</option>
                                     <option value="2">important</option>
                                 </select>
                             </div>
                             <div class="col-xs-6 col-md-2">
-                                <input class="form-control datepicker" pick-a-date-options="{ format: 'dd.mm.yyyy' }" pick-a-date="date" type="text" ng-model="todo.deadline">
+                                <input class="form-control datepicker" pick-a-date-options="{ format: 'dd.mm.yyyy' }" pick-a-date="date" type="text" ng-model="todo.deadline" ng-change="save()"> 
                             </div>
                             <div class="col-xs-6 col-md-2">
                                 <button class="btn btn-danger" ng-click="removeTodo($index)">remove</button>
